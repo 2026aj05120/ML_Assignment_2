@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+skill_salary_percentiles_global_sample.csv
+*.code-workspace
