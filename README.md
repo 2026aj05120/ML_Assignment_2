@@ -14,7 +14,7 @@ Predict which salary band (Low / Mid / High, three equally sized groups of USD m
 ## c. GitHub repository
 (https://github.com/2026aj05120/ML_Assignment_2)
 
-Live app: <https://YOUR-APP.streamlit.app>
+Live app: https://mlassignment2-2026aj05120.streamlit.app/
 
 ## d. Models used
 
