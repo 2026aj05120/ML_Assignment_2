@@ -37,10 +37,11 @@ with st.sidebar:
     model_name = st.selectbox("Choose a model", list(models.keys()))
     st.markdown(f"**Target column:** `{target}`  \n**Classes:** {', '.join(class_names)}")
 
+# ---------------- Load data (always into `data`) ----------------
 if uploaded is not None:
     data = pd.read_csv(uploaded)
 elif use_sample:
-    df = pd.read_csv("test_data.csv")
+    data = pd.read_csv("test_data.csv")
 else:
     st.info("👈 Upload a test CSV (or tick the bundled-sample box) to begin. "
             f"The file must contain the {len(features)} feature columns and the `{target}` column.")
@@ -48,16 +49,11 @@ else:
         st.write(features + [target])
     st.stop()
 
-# Ensure df is loaded before checking required columns
-if 'df' in locals() and df is not None:
-    missing = [c for c in features + [target] if c not in df.columns]
-    if missing:
-        st.error(f"Missing required columns in dataset: {missing}")
-    else:
-        # Proceed with model execution or UI rendering
-        pass
-else:
-    st.warning("Please upload or load a valid CSV dataset to continue.")
+# ---------------- Validate the data ----------------
+missing = [c for c in features + [target] if c not in data.columns]
+if missing:
+    st.error(f"Missing required columns in dataset: {missing}")
+    st.stop()
 
 known = set(le.classes_.astype(str))
 data = data.dropna(subset=[target])
