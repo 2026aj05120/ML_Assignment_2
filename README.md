@@ -42,7 +42,7 @@ Live app: https://mlassignment2-2026aj05120.streamlit.app/
 ## How to run locally
 ```
 pip install -r requirements.txt
-python prepare_dataset.py --raw salary_band_dataset.csv --out prepared_dataset.csv
+python prepare_dataset.py --raw skill_salary_percentiles_global_sample.csv --out salary_band_dataset.csv
 python train_models.py --data salary_band_dataset.csv --target salary_band
 python -m streamlit run app.py
 ```
